@@ -125,5 +125,7 @@ The main application package includes the class with the `main` method to start 
 }
 
 # Configuration
+#Application.properties
 
 The configuration package may contain classes related to configuring the Spring application, such as properties or security configurations.
+nasa.api.key=sIIvSFCJdbdFzoHnjlDB1kZ3BdkhmeVac4rnEmwF
