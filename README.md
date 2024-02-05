@@ -9,6 +9,7 @@ This Spring Boot application provides an API endpoint to retrieve NASA's Astrono
 5. Configuration
 
 # Controllers
+#NasaApodController
 
 The controllers package contains classes responsible for handling incoming HTTP requests and defining the API endpoints.
 
@@ -28,8 +29,8 @@ The controllers package contains classes responsible for handling incoming HTTP 
 
 
 # Models
-
 #NasaAPODResponse
+
 The models package includes classes that represent the data structures used in the application, such as APOD objects.
 
 	// Constructors
