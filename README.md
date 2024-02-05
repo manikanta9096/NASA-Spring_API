@@ -86,8 +86,31 @@ The models package includes classes that represent the data structures used in t
 
 
 # Services
+#NasaApodService
 
 The services package contains classes that handle the business logic of fetching APOD data from the NASA API and processing the requests.
+@Service
+public class NasaApodService {
+
+    @Value("${nasa.apod.apiKey}")
+    private String apiKey;  // You can use an application.properties or application.yml file for configuration.
+
+    @Value("${nasa.apod.baseUrl}")
+    private String baseUrl;
+
+    private final RestTemplate restTemplate;
+
+    public NasaApodService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public NasaApodResponse getApodByDate(String date) {
+        String apiUrl = baseUrl + "/planetary/apod?api_key=" + apiKey + "&date=" + date;
+        return restTemplate.getForObject(apiUrl, NasaApodResponse.class);
+    }
+
+    // Add other methods for different APOD retrieval options (start date, end date, count, etc.)
+}
 
 # Main Application
 #SpringNasaApiApplication
