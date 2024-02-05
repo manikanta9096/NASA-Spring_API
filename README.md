@@ -25,7 +25,6 @@ The controllers package contains classes responsible for handling incoming HTTP 
                                      @RequestParam(required = false) Boolean thumbs ) {
         return nasaApodService.getAPOD(date, start_date, end_date, count, thumbs);
     }
-}
 
 
 # Models
@@ -83,15 +82,11 @@ The models package includes classes that represent the data structures used in t
 		this.thumbnailUrl = thumbnailUrl;
 	}
 
-}
-
 
 # Services
 #NasaApodService
 
 The services package contains classes that handle the business logic of fetching APOD data from the NASA API and processing the requests.
-@Service
-public class NasaApodService {
 
     @Value("${nasa.apod.apiKey}")
     private String apiKey;  // You can use an application.properties or application.yml file for configuration.
@@ -111,7 +106,6 @@ public class NasaApodService {
     }
 
     // Add other methods for different APOD retrieval options (start date, end date, count, etc.)
-}
 
 # Main Application
 #SpringNasaApiApplication
@@ -122,10 +116,9 @@ The main application package includes the class with the `main` method to start 
 		SpringApplication.run(NasaApiSpringApplication.class, args);
 	}
 
-}
-
 # Configuration
 #Application.properties
 
 The configuration package may contain classes related to configuring the Spring application, such as properties or security configurations.
+
 nasa.api.key=sIIvSFCJdbdFzoHnjlDB1kZ3BdkhmeVac4rnEmwF
