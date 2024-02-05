@@ -12,18 +12,6 @@ This Spring Boot application provides an API endpoint to retrieve NASA's Astrono
 
 The controllers package contains classes responsible for handling incoming HTTP requests and defining the API endpoints.
 
-package com.nasa.SpringNasaAPI.controller;
-
-import com.nasa.SpringNasaAPI.Service.NasaApodService;
-import com.nasa.SpringNasaAPI.model.NasaApodResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-@RestController
-public class NasaApodController {
-
     @Autowired
     private  NasaApodService nasaApodService;
 
