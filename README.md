@@ -90,8 +90,15 @@ The models package includes classes that represent the data structures used in t
 The services package contains classes that handle the business logic of fetching APOD data from the NASA API and processing the requests.
 
 # Main Application
+#SpringNasaApiApplication
 
 The main application package includes the class with the `main` method to start the Spring Boot application.
+
+	public static void main(String[] args) {
+		SpringApplication.run(NasaApiSpringApplication.class, args);
+	}
+
+}
 
 # Configuration
 
