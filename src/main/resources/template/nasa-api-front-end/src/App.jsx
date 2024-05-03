@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import NasaData from './NasaData'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NasaData from './NasaData';
+import SecondPage from './SecondPage';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
-    <>
-      <div>
-       <NasaData/>
-      </div>
-    </>
-  )
+    <Router>
+      <Routes>
+      <Route
+          path="/"
+          element={<NasaData />}
+        />
+        <Route path="/second" element={<SecondPage  />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

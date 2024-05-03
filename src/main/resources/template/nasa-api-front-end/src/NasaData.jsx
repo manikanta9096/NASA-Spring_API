@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import useStore from './store';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const NasaData = () => {
-  const [apodData, setApodData] = useState([]);
+  
+  const setApodData = useStore(state => state.setApodData);
   const [queryParams, setQueryParams] = useState({});
   const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
@@ -21,11 +25,17 @@ const NasaData = () => {
         params: queryParams
       });
       setApodData(response.data);
+      // console.log(response.data);
+
+     
+      
+      
     } catch (error) {
       console.error('Error fetching data:', error);
     }
     setLoading(false);
   };
+  // console.log(useStore(state => state))
 
   // Function to update query parameters
   const updateQueryParams = (key, value) => {
@@ -49,6 +59,7 @@ const NasaData = () => {
 
   return (
     <div className="container">
+      
       <h1>NASA APOD Data</h1>
       {/* Display selected date */}
       <p>Selected Date: {selectedDate}</p>
@@ -108,16 +119,27 @@ const NasaData = () => {
       </form>
       
       {/* Display data */}
-      <ul className="list-unstyled">
-        {apodData.map(apod => (
-          <li key={apod.date}>
-            <h2>{apod.title}</h2>
-            <img src={apod.url} alt={apod.title} className="img-fluid mb-2" />
-            <p>{apod.explanation}</p>
-            <p>Date: {apod.date}</p> {/* Displaying the date from the response */}
-          </li>
-        ))}
-      </ul>
+
+      <Link to="/second"
+      className="btn btn-primary me-2  mt-5 flex justify-center items-center " disabled={loading}>Goto Results Page</Link>
+      <div className="container">
+            <div className="row">
+            {useStore(state => state.apodData).map(apod => (
+                <div className="col-sm-4 mb-3" key={apod.date}>
+                    <div className="card">
+                    <img src={apod.url} alt={apod.title} className="card-img-top" />
+                    <div className="card-body">
+                        <h5 className="card-title">{apod.title}</h5>
+                        <p className="card-text">{apod.explanation}</p>
+                        <p className="card-text"><small className="text-muted">{apod.date}</small></p>
+                    </div>
+                    </div>
+                </div>
+                ))}
+            </div>
+            </div>
+
+
     </div>
   );
 };
